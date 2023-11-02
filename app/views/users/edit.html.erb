@@ -1,0 +1,59 @@
+<% if current_user.id == @user.id %>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="bg-warning p-3 text-center">Editer Profile</h1>
+        <%= form_for @user do |f| %>
+          <div class="form-group">
+            <%= f.label :age, 'Rappel ton age' %>
+            <%= f.number_field :age, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :first_name, 'Prénom' %>
+            <%= f.text_field :first_name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :last_name, "Nom de famille" %>
+            <%= f.text_field :last_name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, 'Adresse email' %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :description, "Une courte descrpition sur vous-même" %>
+            <%= f.text_field :description, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, 'Mot de passe' %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, 'Confirmer le mot de passe' %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :city_id, 'Ville' %>
+            <%= f.collection_select :city_id, City.all, :id, :name, { prompt: 'Sélectionnez la ville d\'où vous venez' }, class: 'form-control' %>
+          </div>
+          <div class= text-danger>
+            <p>Tous les champs sont obligatoire</p>
+          </div> 
+          <%= f.submit "Mettre à jour les informations", class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="bg-warning p-3 text-center">Profil de <%= @user.first_name %></h1>
+        <h1 class="bg-dark p-3 text-center text-danger">Vous devez être connecté en tant que <%= @user.first_name %> pour éditer le profil.</h1>
+        <div class="text-center">
+          <%= link_to "Connexion", new_session_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

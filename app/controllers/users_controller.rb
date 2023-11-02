@@ -3,7 +3,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-
+  def edit
+    @user = User.find(params[:id])
+    render :edit
+  end
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Le profil a été mis à jour avec succès!'
+    else
+      render 'edit'
+    end
+  end
+  
   def new
     # Méthode qui crée un potin vide et l'envoie à une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
     @user = User.new

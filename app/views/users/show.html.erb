@@ -1,17 +1,22 @@
-<div class="card">
-  <div class="container mt-4">
-    <h1 class="bg-warning p-3 text-center">Profil de l'utilisateur</h1>
-    <div class="card mt-4">
-      <div class="card-body">
-        <h2 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h2>
-        <p class="card-text">Age : <%= @user.age %></p>
-        <%= link_to "Voir la ville de #{@user.first_name}", city_path(@user.city_id) %>
-        <p class="card-text">E-mail : <%= @user.email %></p>
-        <p class="card-text">Description : <%= @user.description %></p>
-        <div>
-          <%= link_to "Editer les infos", edit_user_path(@user), class: "btn btn-success btn-sm" %>
-
-          
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="bg-warning p-3 text-center">Profil de l'utilisateur</h1>
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h2>
+          <p class="card-text">Age : <%= @user.age %></p>
+          <%= link_to "Voir la ville de #{@user.first_name}", city_path(@user.city_id) %>
+          <p class="card-text">E-mail : <%= @user.email %></p>
+          <p class="card-text">Description : <%= @user.description %></p>
+          <div>
+            <% if current_user == @user %>
+              <%= link_to "Editer les infos", edit_user_path(@user), class: "btn btn-success btn-sm" %>
+              <%= form_tag session_path(current_user), method: :delete, class: "nav-link text-danger" do %>
+                <%= submit_tag "Déconnexion", class: "btn btn-danger btn-sm" %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
