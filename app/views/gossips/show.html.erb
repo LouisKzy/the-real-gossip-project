@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <div class="card my-3">
+    <div class="card-body">
+      <h1 class="card-title text-center bg-warning p-3"><%= @gossip.title %></h1>
+      <p class="card-subtitle mb-2 text-muted"> Écrit par : <%=  @gossip.user.first_name %> <%= @gossip.user.last_name %></p>
+      <p class="card-subtitle mb-2 text-muted"> Ville : <%= @gossip.user.city.name %></p>
+      <p class="card-subtitle mb-2 text-muted">Date de création : <%= @gossip.created_at.strftime('%d %b %Y à %H:%M') %></p>
+      <p class="card-text"><strong>Ce que <%= @gossip.user.first_name %> a dit :</strong></p>
+      <p class="card-text"><%= @gossip.content %></p>
+      <div>
+        <%= link_to "Editer le Gossip", edit_gossip_path(@gossip), class: "btn btn-success btn-sm" %>
+        <%= link_to "Voir le profil de l'auteur", user_path(@gossip.user), class: "btn btn-info btn-sm" %>
+        <%= link_to "Supprimer le gossip", gossip_path, class: "btn btn-danger btn-sm", method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h1 class="bg-warning p-3 text-center rounded">Bienvenue sur The Gossip Project</h1>
+  <p><%= link_to 'Créer un nouveau potin', new_gossip_path, class: 'btn btn-success' %> <%= link_to 'Voir tous les Gossips', gossips_path, class: 'btn btn-warning' %></p>
+
+  <h2 class="text-primary mt-4">Voici les potins de la semaine :</h2>
+  <div class="row">
+    <% user_gossips = @gossips.group_by { |gossip| gossip.user } %>
+    <% user_gossips.each do |user, gossips| %>
+      <div class="col-md-4">
+        <div class="card my-3">
+          <div class="card-body bg-info">
+            <h3 class="card-title"><%= user.first_name %></h3>
+            <ul class="list-unstyled">
+              <% gossips.each do |gossip| %>
+                <li>
+                  <p class="card-text"><%= gossip.title %></p>
+                  <p><%= link_to "Voir le gossip", gossip_path(gossip) %></p>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

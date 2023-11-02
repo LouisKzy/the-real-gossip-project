@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title text-center bg-warning p-3"><%= @city.name %></h1>
+
+      <h2 class="card-subtitle mb-2 text-muted">Les potins de cette ville :</h2>
+      <ul>
+        <% @gossips.each do |gossip| %>
+          <li>
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to gossip.title, gossip_path(gossip) %></h5>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
