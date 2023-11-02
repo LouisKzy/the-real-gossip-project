@@ -1,12 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <%= link_to "THE GOSSIP PROJECT", root_path, :class=>"navbar-brand" %>
+  <%= link_to "THE GOSSIP PROJECT", root_path, class: "navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <%= link_to "Notre Equipe", team_path, :class=>"nav-link" %>
-      <%= link_to "Nous contactez", contact_path, :class=>"nav-link" %>
+      <%= link_to "Notre Équipe", team_path, class: "nav-link" %>
+      <%= link_to "Nous contacter", contact_path, class: "nav-link" %>
     </div>
+    <ul class="navbar-nav ml-auto"> <!-- Utilisation d'une liste non ordonnée (ul) pour aligner à droite -->
+      <% if current_user %>
+        <li class="nav-item">
+          <%= form_tag session_path(current_user), method: :delete, class: "nav-link text-danger" do %>
+            <%= submit_tag "Déconnexion", class: "btn btn-danger btn-sm" %>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Connexion", new_session_path, class: "nav-link text-primary" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Inscription", new_user_path, class: "nav-link text-success" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </nav>
+
+
+

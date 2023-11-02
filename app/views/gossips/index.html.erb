@@ -2,9 +2,9 @@
   <h1 class="bg-warning p-3 text-center rounded">Bienvenue sur The Gossip Project</h1>
   <p><%= link_to 'Créer un nouveau potin', new_gossip_path, class: 'btn btn-success' %> <%= link_to 'Voir tous les Gossips', gossips_path, class: 'btn btn-warning' %></p>
 
-  <h2 class="text-primary mt-4">Voici les potins de la semaine :</h2>
+  <h2 class="text-primary mt-4">Voici les 10 derniers potins balancé :</h2>
   <div class="row">
-    <% user_gossips = @gossips.group_by { |gossip| gossip.user } %>
+    <% user_gossips = @gossips.last(10).group_by { |gossip| gossip.user } %>
     <% user_gossips.each do |user, gossips| %>
       <div class="col-md-4">
         <div class="card my-3">

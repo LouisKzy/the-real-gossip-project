@@ -11,10 +11,21 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-    <header>
-      <%= render 'layouts/navbar' %>
-    </header>
-  <body data-turbo="false">
-    <%= yield %> 
+  <body>
+    <%= render 'layouts/navbar' %>
+  <% if flash[:success].present? %>
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Tout est bon !</h4>
+    <p><%= flash[:success] %></p>
+  </div>
+  <% end %>
+
+  <% if flash[:alert].present? %>
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">Oh non !</h4>
+        <p><%= flash[:alert] %></p>
+    </div>
+      <% end %>
+      <%= yield %>
   </body>
 </html>
