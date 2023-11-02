@@ -10,7 +10,7 @@
       <div>
         <%= link_to "Editer le Gossip", edit_gossip_path(@gossip), class: "btn btn-success btn-sm" %>
         <%= link_to "Voir le profil de l'auteur", user_path(@gossip.user), class: "btn btn-info btn-sm" %>
-        <%= link_to "Supprimer le gossip", gossip_path, class: "btn btn-danger btn-sm", method: :delete %>
+        <%= button_to "Supprimer le gossip", gossip_path, class: "btn btn-danger btn-sm", form: { data: { turbo_confirm: 'Etes vous sur ?'  } }, method: :delete %>
       </div>
     </div>
   </div>

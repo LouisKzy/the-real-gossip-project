@@ -50,7 +50,7 @@ class GossipsController < ApplicationController
     # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
-    redirect_to gossips_path, notice: 'Le potin a été supprimer!'
+    redirect_to "/", notice: 'Le potin a été supprimer!'
   end
 
   private
