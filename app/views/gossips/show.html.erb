@@ -6,17 +6,16 @@
       <p class="card-subtitle mb-2 text-muted"> Ville : <%= @gossip.user.city.name %></p>
       <p class="card-subtitle mb-2 text-muted">Date de création : <%= @gossip.created_at.strftime('%d %b %Y à %H:%M') %></p>
       <p class="card-text"><strong>Ce que <%= @gossip.user.first_name %> a dit :</strong></p>
-      <p class="card-text"><%= @gossip.content %></p>
-      <div>
+      <p class="card-text justify-content-center"><%= @gossip.content %></p>
+      div
+      <div class="justify-content-end">
         <%= link_to "Voir le profil de l'auteur", user_path(@gossip.user), class: "btn btn-info btn-sm" %>
-      </div>
-      <% puts current_user.inspect%>
+      
       <% if current_user == @gossip.user %>
-        <div>
-          <%= link_to "Editer le Gossip", edit_gossip_path(@gossip), class: "btn btn-success btn-sm" %>
-          <%= button_to "Supprimer le gossip", gossip_path, class: "btn btn-danger btn-sm", form: { data: { turbo_confirm: 'Etes vous sur ?'  } }, method: :delete %>
-        </div>
-      <% end %>  
+        <%= link_to "Editer le Gossip", edit_gossip_path(@gossip), class: "btn btn-success btn-sm" %>
+        <%= button_to "Supprimer le gossip", gossip_path, class: "btn btn-danger btn-sm", form: { data: { turbo_confirm: 'Etes vous sur ?'  } }, method: :delete %>
+      <% end %>
+      </div>  
     </div>
   </div>
 </div>

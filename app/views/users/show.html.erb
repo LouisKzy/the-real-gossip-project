@@ -9,12 +9,9 @@
           <%= link_to "Voir la ville de #{@user.first_name}", city_path(@user.city_id) %>
           <p class="card-text">E-mail : <%= @user.email %></p>
           <p class="card-text">Description : <%= @user.description %></p>
-          <div>
+          <div class= "d-flex justify-content-end">
             <% if current_user == @user %>
               <%= link_to "Editer les infos", edit_user_path(@user), class: "btn btn-success btn-sm" %>
-              <%= form_tag session_path(current_user), method: :delete, class: "nav-link text-danger" do %>
-                <%= submit_tag "Déconnexion", class: "btn btn-danger btn-sm" %>
-              <% end %>
             <% end %>
           </div>
         </div>
