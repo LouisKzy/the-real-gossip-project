@@ -4,14 +4,11 @@ class StaticController < ApplicationController
   end
 
   def contact
-    
   end
 
   def index
-
   end
 
   def team
-
   end
 end
