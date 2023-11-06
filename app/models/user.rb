@@ -9,4 +9,9 @@ class User < ApplicationRecord
 
   belongs_to :city
   has_many :gossips
+  after_create :welcome_send
+
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
 end
