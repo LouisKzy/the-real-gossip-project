@@ -20,21 +20,3 @@ Gossip.destroy_all
     )
 end
 
-10.times do 
-    User.create(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        email: Faker::Internet.email,
-        description: Faker::Fantasy::Tolkien.poem,
-        age: Faker::Number.between(from: 18, to: 99),
-        city: City.all.sample
-    )
-end
-
-20.times do 
-    Gossip.create(
-        title: Faker::Book.title,
-        content: Faker::ChuckNorris.fact,
-        user: User.all.sample
-    )
-end
